@@ -56,7 +56,7 @@ app.get('/',  function (req, res) {
 
 
 
-app.set('port', (3000));
+app.set('port', (process.env.PORT));
 //app.set('port', (process.env.PORT));
 
 app.use(accessControls);
