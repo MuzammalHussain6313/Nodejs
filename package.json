@@ -15,17 +15,17 @@
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "~4.16.0",
     "jsonwebtoken": "^8.2.2",
+    "kro": "^1.1.0",
     "mongoose": "^5.7.5",
-    "dotenv": "^6.0.0",
     "mongoose-paginate": "^5.0.3",
     "multer": "^1.4.2",
     "nodemailer": "^4.7.0",
     "randomstring": "^1.1.5"
   },
   "devDependencies": {
-    
     "eslint-config-google": "^0.9.1"
   }
 }
