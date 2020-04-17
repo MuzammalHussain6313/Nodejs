@@ -74,10 +74,10 @@ app.use(accessControls);
         }
     });
     var upload = multer({storage: storage})
-    app.post('/file', upload.single('file'), (req, res, next) => {
+    app.post("/uploadmultiple", upload.array('myfiles',12), (req, res, next) => {
       try{
-      const file = req.file;
-      console.log(filess.filename);
+      const files = req.files;
+      // console.log(filess.filename);
     //   const body = req.body;
     //   console.log("fgdfgfdhfghf");
     //   body.url = `${flatId}/FunOfHeuristic_${files.originalname}.png`;
@@ -85,7 +85,7 @@ app.use(accessControls);
     // console.log(flat);
     // const result = await flat.save();
     //   console.log(file.fieldname);
-      if(!file)
+      if(!files)
       {
         const error =new Error('plsx');
         error.httpStatusCode=400
@@ -94,7 +94,7 @@ app.use(accessControls);
 
       }
   
-          res.send(file)
+          res.send(files)
     }
       catch (ex) {
         console.log('ex', ex);
