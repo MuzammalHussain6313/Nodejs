@@ -31,7 +31,7 @@ flatsController.addBook = async (req, res) => {
  
     const flat= new Flats(body);
   const result = await flat.save();
-  
+   const flatId = result.find(_id);
 
     res.status(200).send({
       code: 200,

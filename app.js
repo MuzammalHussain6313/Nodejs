@@ -62,21 +62,25 @@ app.set('port', (process.env.PORT));
 app.use(accessControls);
   const storage = multer.diskStorage({
       destination: (req, file, cb) => {
-          cb(null, 'uploads')
+          cb(null, '/upload')
+          console.log("kjbjbkjbkb");
         },
         filename: (req,file, cb) => {
-          cb(null,'FunOfHeuristic_${files.originalname}.png')
+          cb(null, `FunOfHeuristic_${file.originalname}`)
         }
     });
-    const upload = multer({storage: storage});
-    app.post('/file', upload.single('file'), async(req, res, next) => {
+    var upload = multer({storage: storage})
+    app.post('/file', upload.single('file'), (req, res, next) => {
       try{
       const file = req.file;
-      const body = req.body;
-    //   body.url = 'FunOfHeuristic_${files.originalname}.png';
+      console.log(filess.filename);
+    //   const body = req.body;
+    //   console.log("fgdfgfdhfghf");
+    //   body.url = `${flatId}/FunOfHeuristic_${files.originalname}.png`;
     // const flat= new Flats(body);
+    // console.log(flat);
     // const result = await flat.save();
-      console.log(file.fieldname);
+    //   console.log(file.fieldname);
       if(!file)
       {
         const error =new Error('plsx');
@@ -85,6 +89,7 @@ app.use(accessControls);
 
 
       }
+  
           res.send(file)
     }
       catch (ex) {
