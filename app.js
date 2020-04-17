@@ -45,10 +45,7 @@ fs.readdirSync(__dirname + "/models").forEach(function(file) {
 
 
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/addservice.page.html');
-});
-// in case you want to serve images 
+
 app.use(express.static("public"));
 
 app.get('/',  function (req, res) {
@@ -56,12 +53,8 @@ app.get('/',  function (req, res) {
     message: 'Express backend server'});
 });
 
-
-
-
 app.set('port', (process.env.PORT));
 //app.set('port', (process.env.PORT));
-
 app.use(accessControls);
   const storage = multer.diskStorage({
       destination: (req, file, cb) => {
@@ -70,13 +63,14 @@ app.use(accessControls);
         },
         filename: (req,file, cb) => {
           // cb(null, `FunOfHeuristic_${file.originalname}`)
-          cb(null, file.fieldname + '-' + Date.now() + Path.extname(file.originalname))
+          cb(null, `FunOfHeuristic_${file.originalname}`)
         }
     });
     var upload = multer({storage: storage})
-    app.post("/uploadmultiple", upload.array('myfiles',12), (req, res, next) => {
+    app.post("/uploadmultiple", upload.array('files',12), (req, res, next) => {
       try{
       const files = req.files;
+      console.log(files);
       // console.log(filess.filename);
     //   const body = req.body;
     //   console.log("fgdfgfdhfghf");
@@ -94,7 +88,7 @@ app.use(accessControls);
 
       }
   
-          res.send(files)
+      res.send({sttus:  'ok'});
     }
       catch (ex) {
         console.log('ex', ex);
