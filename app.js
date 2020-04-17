@@ -11,6 +11,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
+const path = require('path');
 let flats;
 app.use(
     bodyParser.urlencoded({
@@ -44,7 +45,9 @@ fs.readdirSync(__dirname + "/models").forEach(function(file) {
 
 
 
-
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/addservice.page.html');
+});
 // in case you want to serve images 
 app.use(express.static("public"));
 
@@ -66,7 +69,8 @@ app.use(accessControls);
           console.log("kjbjbkjbkb");
         },
         filename: (req,file, cb) => {
-          cb(null, `FunOfHeuristic_${file.originalname}`)
+          // cb(null, `FunOfHeuristic_${file.originalname}`)
+          cb(null, file.fieldname + '-' + Date.now() + Path.extname(file.originalname))
         }
     });
     var upload = multer({storage: storage})
