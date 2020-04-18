@@ -11,6 +11,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
+var mkdirp = require('mkdirp');
 const path = require('path');
 let flats;
 app.use(
@@ -56,17 +57,39 @@ app.get('/',  function (req, res) {
 app.set('port', (process.env.PORT));
 //app.set('port', (process.env.PORT));
 app.use(accessControls);
-  const storage = multer.diskStorage({
-      destination: (req, file, cb) => {
-          cb(null, '/upload')
-          console.log("kjbjbkjbkb");
-        },
-        filename: (req,file, cb) => {
-          // cb(null, `FunOfHeuristic_${file.originalname}`)
-          cb(null, `FunOfHeuristic_${file.originalname}`)
-        }
-    });
-    var upload = multer({storage: storage})
+
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let path =   'upload';
+    mkdirp(path, err =>{
+      if(err){
+        console.log('err',err);
+        cb(err, path)
+      }
+    })
+    cb(null,path)
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    // only pdf files accepted
+  //   if (!file.originalname.match(/\.csv$/)) {
+  //     return cb(new Error('Only csv files are allowed!'), false);
+  //   }
+  //   else{
+    cb(null, true);
+  //  }
+   }
+  //  ,
+  // limits: { fileSize: maxSize }
+});
     app.post("/uploadmultiple", upload.array('files',12), (req, res, next) => {
       try{
       const files = req.files;
