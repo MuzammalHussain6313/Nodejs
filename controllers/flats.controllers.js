@@ -31,8 +31,8 @@ flatsController.addBook = async (req, res) => {
  
     const flat= new Flats(body);
   const result = await flat.save();
-   const flatId = result.find(_id);
-
+   const idd = result._id;
+   console.log(idd);
     res.status(200).send({
       code: 200,
       message: 'Flat Added Successfully',

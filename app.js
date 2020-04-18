@@ -93,13 +93,13 @@ const upload = multer({
     app.post("/uploadmultiple", upload.array('files',12), (req, res, next) => {
       try{
       const files = req.files;
-      console.log(files);
+       
       // console.log(filess.filename);
     //   const body = req.body;
     //   console.log("fgdfgfdhfghf");
     //   body.url = `${flatId}/FunOfHeuristic_${files.originalname}.png`;
-    // const flat= new Flats(body);
-    // console.log(flat);
+      const flat= new Flats(body);
+      console.log(flat);
     // const result = await flat.save();
     //   console.log(file.fieldname);
       if(!files)

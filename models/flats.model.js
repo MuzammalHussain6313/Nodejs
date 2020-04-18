@@ -3,9 +3,7 @@ const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
 const Flat = new Schema({
-    id: {
-        type: Number
-    },
+    
     owner: {
         type: String,
        
