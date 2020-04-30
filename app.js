@@ -12,7 +12,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
 var mkdirp = require('mkdirp');
+const flatsController = {};
+const Flats = require("./models/flats.model");
 const path = require('path');
+
 let flats;
 app.use(
     bodyParser.urlencoded({
@@ -32,7 +35,8 @@ app.use(
 const UsersRoutes = require('./routes/users.routes');
 const FlatsRoutes = require('./routes/flats.routes');
 const ClientsRoutes = require('./routes/clients.routes');
-
+const HotelsRoutes = require('./routes/hotels.routes');
+const RoomsRoutes = require('./routes/rooms.routes');
 // connection to mongoose
 const mongoCon = process.env.mongoCon;
 
@@ -47,8 +51,8 @@ fs.readdirSync(__dirname + "/models").forEach(function(file) {
 
 
 
-app.use(express.static("public"));
-
+//app.use(express.static("public"));
+app.use('/images', express.static(path.join(__dirname, 'upload')));
 app.get('/',  function (req, res) {
   res.status(200).send({
     message: 'Express backend server'});
@@ -90,16 +94,41 @@ const upload = multer({
   //  ,
   // limits: { fileSize: maxSize }
 });
-    app.post("/uploadmultiple", upload.array('files',12), (req, res, next) => {
+    app.post("/upload", upload.array('files',12), async (req, res, next) => {
+      
       try{
+        var array = [];
       const files = req.files;
-       
-      // console.log(filess.filename);
-    //   const body = req.body;
-    //   console.log("fgdfgfdhfghf");
-    //   body.url = `${flatId}/FunOfHeuristic_${files.originalname}.png`;
-      const flat= new Flats(body);
-      console.log(flat);
+      // for(let i of files){
+      //   console.log(i.originalname);
+        for (var i = 0; i < files.length; i++) {
+               array.push(files[i].originalname);
+          
+      }
+     console.log(array);
+    
+        
+        // formData.append('ID', this.flatid);
+      
+      
+    //   console.log(files);
+    //  const pathh = files[0].path;
+    //  console.log(pathh);
+
+
+      // const body = JSON.parse(JSON.stringify(req.body));
+      // const flatid = body.ID;
+  
+      
+      // console.log(body);
+      // console.log(req.body);
+      // console.log(flatid);
+      // body.url = `${flatid}/${pathh}`;
+      // body.city = "";
+      // const flat= new Flats(body);
+      // const result = await flat.save();
+    
+     
     // const result = await flat.save();
     //   console.log(file.fieldname);
       if(!files)
@@ -111,7 +140,9 @@ const upload = multer({
 
       }
   
-      res.send({sttus:  'ok'});
+      res.send({sttus:  'ok',
+        array
+    });
     }
       catch (ex) {
         console.log('ex', ex);
@@ -120,10 +151,11 @@ const upload = multer({
   
 // Routes which should handle requests
 
-
 app.use("/users", UsersRoutes);
 app.use("/flats", FlatsRoutes);
 app.use("/clients", ClientsRoutes);
+app.use("/hotels", HotelsRoutes);
+app.use("/rooms", RoomsRoutes);
 app.use(errorHandler);
 
 app.use(errorMessage);

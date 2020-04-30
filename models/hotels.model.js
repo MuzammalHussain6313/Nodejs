@@ -2,18 +2,21 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
-const Flat = new Schema({
-
+const Hotel = new Schema({
+    
     owner: {
         type: String
        
+    },
+    roomno: {
+        type: Array
     },
     
      name: {
         type: String
     },
     number: {                                       
-        type: String,
+        type: String
 
     },
      city: {
@@ -22,15 +25,7 @@ const Flat = new Schema({
     Location:{
         type: String
     },
-    Lat:{
-        type: String
-    },
-    Lng:{
-        type: String
-    },
-    image: {
-        type: String
-    },
+    
     url: {
         type: Array
     },
@@ -40,7 +35,7 @@ const Flat = new Schema({
     }
 });
 
-Flat.plugin(mongoosePaginate);
+Hotel.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("Flat", Flat);
+module.exports = mongoose.model("Hotel", Hotel);
 

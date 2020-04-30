@@ -35,6 +35,7 @@ flatsController.addBook = async (req, res) => {
    console.log(idd);
     res.status(200).send({
       code: 200,
+      result,
       message: 'Flat Added Successfully',
     });
   } catch (error) {
