@@ -2,23 +2,22 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
-const Room = new Schema({
+const Reservedroom = new Schema({
     
     is_deleted: {
         type: Boolean,
         default: false
     },
-    Rooms: {
+    Room: {
         type: Array   
     },
-    owner: {
+    checkout: {
         type: String
        
     },
     
 });
 
-Room.plugin(mongoosePaginate);
+Reservedroom.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("Room", Room);
-
+module.exports = mongoose.model("Reservedroom", Reservedroom);

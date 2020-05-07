@@ -47,9 +47,9 @@ hotelsController.addhotel = async (req, res) => {
 
     try {
     
-      const owner = req.params.owner;
+      const owner1 = req.params.owner;
      
-     const hotels = await Hotels.find({ owner: owner});
+     const hotels = await Hotels.find({ owner: owner1});
       //console.log(flat);  this.flats = data.data;
       res.status(200).send({
         code: 200,

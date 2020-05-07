@@ -37,11 +37,14 @@ const FlatsRoutes = require('./routes/flats.routes');
 const ClientsRoutes = require('./routes/clients.routes');
 const HotelsRoutes = require('./routes/hotels.routes');
 const RoomsRoutes = require('./routes/rooms.routes');
+const ReservedroomsRoutes = require('./routes/reservedrooms.routes');
 // connection to mongoose
+// const mongoCon = process.env.mongoCon;
+
+// mongoose.connect('mongodb+srv://dbadmin:xxxxxxxx8@cluster0-whpqa.mongodb.net/bookyapp?retryWrites=true&w=majority',{ useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true });
 const mongoCon = process.env.mongoCon;
 
-mongoose.connect('mongodb+srv://dbadmin:xxxxxxxx8@cluster0-whpqa.mongodb.net/bookyapp?retryWrites=true&w=majority',{ useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true });
-
+mongoose.connect(mongoCon,{ useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true });
 
 const fs = require('fs');
 fs.readdirSync(__dirname + "/models").forEach(function(file) {
@@ -156,6 +159,7 @@ app.use("/flats", FlatsRoutes);
 app.use("/clients", ClientsRoutes);
 app.use("/hotels", HotelsRoutes);
 app.use("/rooms", RoomsRoutes);
+app.use("/reservedrooms", ReservedroomsRoutes);
 app.use(errorHandler);
 
 app.use(errorMessage);

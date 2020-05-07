@@ -8,9 +8,7 @@ const Hotel = new Schema({
         type: String
        
     },
-    roomno: {
-        type: Array
-    },
+   
     
      name: {
         type: String
