@@ -37,9 +37,9 @@ clientsController.registerUser = async (req, res) => {
         to : `${req.body.email}`, // receiver email2
         subject: "Account Verification",
         html: `<h1>Hello Friend Please Click on this link<h1><br>Token
-    <br><a href="http://localhost:8100/clientverify?token=${token}">CLICK ME TO ACTIVATE YOUR ACCOUNT</a>`
+    <br><a href="https://mybookyap.herokuapp.com//clientverify?token=${token}">CLICK ME TO ACTIVATE YOUR ACCOUNT</a>`
       };
-  
+                                                            
       transporter.sendMail(mailOptions, function (err, info) {
         if(err)
           console.log(err)
@@ -88,8 +88,12 @@ clientsController.registerUser = async (req, res) => {
         const email = body.email;
       const result = await Clients.updateOne({email: email}, {$set:{active:true}});
       }
+      res.send({
+        data: result
+      });
     }
      catch (ex) {
+     
       console.log('ex', ex);
     }
 }; 
