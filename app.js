@@ -156,7 +156,7 @@ const upload = multer({
 app.use("/users", UsersRoutes);
 app.use("/flats", FlatsRoutes);
 app.use("/clients", ClientsRoutes);
-app.use("/hotels", HotelsRoutes);
+app.use("/hotel", HotelsRoutes);
 app.use("/rooms", RoomsRoutes);
 app.use("/reservedrooms", ReservedroomsRoutes);
 app.use(errorHandler);

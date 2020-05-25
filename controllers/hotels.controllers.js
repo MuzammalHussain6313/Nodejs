@@ -35,7 +35,7 @@ hotelsController.addhotel = async (req, res) => {
      //console.log(idd);
       res.status(200).send({
         code: 200,
-        //result,
+        result,
         message: 'Hotel Added Successfully',
       });
     } catch (error) { 
