@@ -38,6 +38,7 @@ const ClientsRoutes = require('./routes/clients.routes');
 const HotelsRoutes = require('./routes/hotels.routes');
 const RoomsRoutes = require('./routes/rooms.routes');
 const ReservedroomsRoutes = require('./routes/reservedrooms.routes');
+const ResturantsRoutes = require('./routes/resturants.routes');
 
     /////////// HEROKU Live URL
 const mongoCon = process.env.mongoCon;
@@ -159,6 +160,7 @@ app.use("/clients", ClientsRoutes);
 app.use("/hotels", HotelsRoutes);
 app.use("/rooms", RoomsRoutes);
 app.use("/reservedrooms", ReservedroomsRoutes);
+app.use("/resturants", ResturantsRoutes);
 app.use(errorHandler);
 
 app.use(errorMessage);
