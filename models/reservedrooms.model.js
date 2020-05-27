@@ -3,7 +3,10 @@ const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
 const Reservedroom = new Schema({
-    
+    clientid:{
+        type: String
+       
+    },
     is_deleted: {
         type: Boolean,
         default: false
