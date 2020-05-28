@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
-const Reservedroom = new Schema({
+const Roomcodes = new Schema({
     clientid:{
         type: String
        
@@ -11,16 +11,13 @@ const Reservedroom = new Schema({
         type: Boolean,
         default: false
     },
-    Room: {
+    RoomReserved: {
         type: Array   
     },
-    checkout: {
-        type: String
-       
-    },
-    RoomReserved
+    
+    
 });
 
-Reservedroom.plugin(mongoosePaginate);
+Roomcodes.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("Reservedroom", Reservedroom);
+module.exports = mongoose.model("Roomcodes", Roomcodes);
