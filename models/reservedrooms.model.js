@@ -18,7 +18,7 @@ const Reservedroom = new Schema({
         type: String
        
     },
-    RoomReserved
+    
 });
 
 Reservedroom.plugin(mongoosePaginate);
