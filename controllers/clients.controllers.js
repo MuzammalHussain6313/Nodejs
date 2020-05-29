@@ -144,7 +144,7 @@ clientsController.loginUser = async (req, res) => {
     }
     else
     {
-       console.log("fuck you");
+       console.log("fsdg");
     } 
   }catch (ex) {
       console.log('ex', ex);
