@@ -15,7 +15,7 @@ roomController.bookroom = async (req, res) => {
          console.log(Rmid);
         // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
 
-        const rmid = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
+        const rmid = await  Reservedroom.find({ "body.Room.Rooms.roomno.Roomid": Rmid})
            console.log(rmid);
         if(rmid.length)
           {
