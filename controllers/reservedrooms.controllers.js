@@ -13,7 +13,7 @@ roomController.bookroom = async (req, res) => {
          const rmid = await Reservedroom.findOne({_id: clientid });
          console.log(rmid.Room);
          const scanroom = await  Reservedroom.findOne({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
-         if(scanroom.length)
+         if(scanroom)
          {
            console.log("SCAN verified");
          }
