@@ -5,6 +5,10 @@ roomController.bookroom = async (req, res) => {
     try {
       let result;
       const body = req.body;
+      if(body.active === false)
+      {
+        console.log("knjlk");
+      }
       this.match = false;
       const r = body.Room; 
       console.log(r);
