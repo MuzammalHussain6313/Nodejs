@@ -11,6 +11,7 @@ roomController.bookroom = async (req, res) => {
         const clientid = body.client
         const scanrm = body.roomqr;
          const rmid = await Reservedroom.findOne({_id: clientid });
+         console.log(rmid.Room);
          const scanroom = await  Reservedroom.find({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
          if(scanroom.length)
          {
