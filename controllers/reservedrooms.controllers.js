@@ -10,7 +10,7 @@ roomController.bookroom = async (req, res) => {
         console.log("knjlk");
         const clientid = body.client
         
-         const rmid = await  Reservedroom.findone({_id: clientid });
+         const rmid = await Reservedroom.findOne({_id: clientid });
         console.log(rmid);
       }
       else
