@@ -9,6 +9,9 @@ roomController.bookroom = async (req, res) => {
       {
         console.log("knjlk");
       }
+      else
+      {
+
       this.match = false;
       const r = body.Room; 
       console.log(r);
@@ -49,7 +52,7 @@ roomController.bookroom = async (req, res) => {
         message: 'Rooms Booked Successfully',
       });
     }
-  
+  }
     } catch (error) {
       console.log('error', error);
       console.log("czd");
