@@ -13,15 +13,15 @@ roomController.bookroom = async (req, res) => {
          const rmid = await Reservedroom.findOne({_id: clientid });
          let j = rmid.Room;
          console.log(j);
-        //  for (var i = 0; i < ; i++)
-        //  {
-        //   console.log(rmid.Room[i].Rooms[i].roomno.Roomid);
-        // //  const scanroom = await  Reservedroom.find({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
-        //  }
-        //  if(scanroom.length)
-        //  {
-        //    console.log("SCAN verified");
-        //  }
+         for (var i = 0; i < j.length; i++)
+         {
+          console.log(rmid.Room[i].Rooms[i].roomno.Roomid);
+          const scanroom = await  Reservedroom.find({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
+         }
+         if(scanroom.length)
+         {
+           console.log("SCAN verified");
+         }
       }
       else
       {
