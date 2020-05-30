@@ -7,6 +7,7 @@ roomController.bookroom = async (req, res) => {
       const body = req.body;
       if(body.active === false)
       {
+        console.log(body);
         console.log("knjlk");
         const scanrm = body.roomqr;
           const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":scanrm})
