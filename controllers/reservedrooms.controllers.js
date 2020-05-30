@@ -15,6 +15,11 @@ roomController.bookroom = async (req, res) => {
          {
            console.log("SCAN verified");
          }
+         else
+         { 
+          console.log("fdsfsfsdfdsfsdfsd");
+
+         }
         
       }
       else
