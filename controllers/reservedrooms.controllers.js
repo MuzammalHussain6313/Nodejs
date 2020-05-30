@@ -9,9 +9,12 @@ roomController.bookroom = async (req, res) => {
       {
         console.log("knjlk");
         const clientid = body.client
-         const rmid = await  Reservedroom.findone({ "body._id": clientid})
-        console.log(rmid);
-      }
+        const rmid = await  Reservedroom.findOne(query, function(err, u)
+         {
+          body._id.equals(clientid)
+        })
+          console.log(rmid);
+    }
       else
       {
 
