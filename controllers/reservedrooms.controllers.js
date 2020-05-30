@@ -42,7 +42,7 @@ roomController.bookroom = async (req, res) => {
        const body = req.body;
           const reservedroom = new Reservedroom (body);
          result = await reservedroom.save();
-      
+          console.log(result);
     }
     if(this.match === true)
     {
