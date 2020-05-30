@@ -17,11 +17,11 @@ roomController.bookroom = async (req, res) => {
          {
           console.log(rmid.Room[i].Rooms[i].roomno.Roomid);
           const scanroom = await  Reservedroom.find({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
-         }
          if(scanroom.length)
          {
            console.log("SCAN verified");
          }
+        }
       }
       else
       {
