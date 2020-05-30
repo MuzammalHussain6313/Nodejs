@@ -8,10 +8,9 @@ roomController.bookroom = async (req, res) => {
       if(body.active === false)
       {
         console.log(body);
-        console.log("knjlk");
         const scanrm = body.roomqr;
-      
-      const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":{$eq:scanrm}})
+           const iid = "5ed2064b0e668f00172bfdd3";
+      const scanroom = await  Reservedroom.find({ "_id":idd , "Room.Rooms.roomno.Roomid" :[ scanrm ]})
          if(scanroom.length)
          {
            console.log("SCAN verified");
