@@ -11,12 +11,17 @@ roomController.bookroom = async (req, res) => {
         const clientid = body.client
         const scanrm = body.roomqr;
          const rmid = await Reservedroom.findOne({_id: clientid });
-         console.log(rmid.Room);
-         const scanroom = await  Reservedroom.findOne({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
-         if(scanroom)
-         {
-           console.log("SCAN verified");
-         }
+         let j = rmid.Room;
+         console.log(j);
+        //  for (var i = 0; i < ; i++)
+        //  {
+        //   console.log(rmid.Room[i].Rooms[i].roomno.Roomid);
+        // //  const scanroom = await  Reservedroom.find({ "rmid.Room.Rooms.roomno.Roomid": scanrm})
+        //  }
+        //  if(scanroom.length)
+        //  {
+        //    console.log("SCAN verified");
+        //  }
       }
       else
       {
