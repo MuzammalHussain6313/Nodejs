@@ -5,12 +5,12 @@ roomController.bookroom = async (req, res) => {
     try {
       let result;
       const body = req.body;
-      if(body.roomqr.length)
-      {
-        console.log("jnskjkds");
-         //const rmid = await  Reservedroom.find({ "clientid": Rmid})
+      // if(body.roomqr.length)
+      // {
+      //   console.log("jnskjkds");
+      //    //const rmid = await  Reservedroom.find({ "clientid": Rmid})
          
-      }
+      // }
 
 
       this.match = false;
