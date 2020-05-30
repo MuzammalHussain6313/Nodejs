@@ -35,14 +35,14 @@ roomController.bookroom = async (req, res) => {
        const body = req.body;
           const reservedroom = new Reservedroom (body);
          result = await reservedroom.save();
-         const idd = result._id;
+        // const idd = result._id;
          console.log(idd);
     }
     if(this.match === true)
     {
       res.status(200).send({
         code: 200,
-        idd,
+        result,
         message: 'Rooms Booked Successfully',
       });
     }
