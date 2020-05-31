@@ -70,16 +70,12 @@ roomController.bookroom = async (req, res) => {
           // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
   
           const r = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
-             console.log(rm);
+             console.log(r);
           if(rm.length)
             {
                console.log(" roomId match");
             }
-            else
-            {
-              console.log("giniv");
-              this. match = true;
-            }
+            
         
 
         const date = "2020-05-31T08:56:06.519+05:00";
