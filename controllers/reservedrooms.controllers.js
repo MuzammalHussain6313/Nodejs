@@ -3,16 +3,16 @@ const Reservedroom = require('../models/reservedrooms.model');
 const jsonwebtoken =  require('jsonwebtoken');
 roomController.bookroom = async (req, res) => {
     try {
-      let result;
-      const body = req.body;
+      // let result;
+      // const body = req.body;
 
-      this.match = false;
-      const r = body.Room; 
-      console.log(r);
-         for (var i = 0; i < r.length; i++)
-      {
+      // this.match = false;
+      // const r = body.Room; 
+      // console.log(r);
+      //    for (var i = 0; i < r.length; i++)
+      // {
         
-         let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
+         let Rmid = 111;
          console.log(Rmid);
         // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
 
@@ -21,7 +21,7 @@ roomController.bookroom = async (req, res) => {
         if(rmid.length)
           {
              console.log(" roomId match");
-             rm
+            
           }
           else
           {
@@ -29,16 +29,16 @@ roomController.bookroom = async (req, res) => {
             this. match = true;
           }
       
-        }
+        // }
   
-    console.log(this.match);
-    if(this.match === true)
-    {
-       const body = req.body;
-          const reservedroom = new Reservedroom (body);
-         result = await reservedroom.save();
+    // console.log(this.match);
+    // if(this.match === true)
+    // {
+    //    const body = req.body;
+    //       const reservedroom = new Reservedroom (body);
+    //      result = await reservedroom.save();
         
-    }
+    // }
     if(this.match === true)
     {
       res.status(200).send({
