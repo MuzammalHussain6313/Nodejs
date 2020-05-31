@@ -63,8 +63,27 @@ roomController.bookroom = async (req, res) => {
       const body = req.body;
         let Rmid = body.roomqr;
         console.log(Rmid);
+       
+          
+           let Rmid = 111;
+           console.log(Rmid);
+          // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
+  
+          const rmid = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
+             console.log(rmid);
+          if(rmid.length)
+            {
+               console.log(" roomId match");
+            }
+            else
+            {
+              console.log("giniv");
+              this. match = true;
+            }
+        
+
         const date = "2020-05-31T08:56:06.519+05:00";
-        const scanroom = await  Reservedroom.find({ "checkin":{ $lt: date }})
+        const scanroom = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
       //const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":Rmid})
          if(scanroom.length)
          {
