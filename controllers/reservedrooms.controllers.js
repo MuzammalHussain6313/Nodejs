@@ -42,7 +42,7 @@ roomController.bookroom = async (req, res) => {
     {
       res.status(200).send({
         code: 200,
-        result,
+
         message: 'Rooms Booked Successfully',
       });
     }
@@ -59,7 +59,7 @@ roomController.bookroom = async (req, res) => {
 
   roomController.scan = async (req, res) => {
     try {
-      let result;
+      
       const body = req.body;
         let Rmid = body.roomqr;
         console.log(Rmid);
