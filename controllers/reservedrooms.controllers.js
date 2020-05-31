@@ -76,15 +76,7 @@ roomController.bookroom = async (req, res) => {
                console.log(" roomId match");
             }
             
-        
-
-        const date = "2020-05-31T08:56:06.519+05:00";
-        const scanroom = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
-      //const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":Rmid})
-         if(scanroom.length)
-         {
-           console.log("SCAN verified");
-         }
+    
         
         
 
