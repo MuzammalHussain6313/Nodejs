@@ -1,7 +1,7 @@
 const roomController = {};
 const Reservedroom = require('../models/reservedrooms.model');
 const jsonwebtoken =  require('jsonwebtoken');
-roomController.bookroom =  (req, res) => {
+roomController.bookroom = async (req, res) => {
     try {
       let result;
       const body = req.body;
@@ -13,7 +13,10 @@ roomController.bookroom =  (req, res) => {
       {
         
          let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
-        const rmid =   Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
+         console.log(Rmid);
+
+        const rmid = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
+           console.log(rmid);
         if(rmid.length)
           {
              console.log(" roomId match");
@@ -32,7 +35,7 @@ roomController.bookroom =  (req, res) => {
     {
        const body = req.body;
           const reservedroom = new Reservedroom (body);
-         result =  reservedroom.save();
+         result = await reservedroom.save();
         
     }
     if(this.match === true)
