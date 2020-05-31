@@ -68,7 +68,7 @@ roomController.bookroom = async (req, res) => {
           //  console.log(Rmid);
            for (var i = 0; i < 1; i++)
       {
-        let Rmid = 111;
+        let Rmid = body.roomqr;
         console.log(Rmid);
           const r = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
              console.log(r);
