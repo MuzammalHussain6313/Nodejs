@@ -5,27 +5,14 @@ roomController.bookroom = async (req, res) => {
     try {
       let result;
       const body = req.body;
-      if(body.active === false)
-      {
-        console.log(body);
-        const scanrm = body.roomqr;
-      const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":scanrm})
-         if(scanroom.length)
-         {
-           console.log("SCAN verified");
-         }
-        
-        }
-      else
-      {
 
       this.match = false;
       const r = body.Room; 
       console.log(r);
-      //    for (var i = 0; i < 1; i++)
-      // {
+         for (var i = 0; i < r.length; i++)
+      {
         
-         let Rmid = 111;
+         let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
          console.log(Rmid);
         // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
 
@@ -41,7 +28,7 @@ roomController.bookroom = async (req, res) => {
             this. match = true;
           }
       
-        // }
+        }
   
     console.log(this.match);
     if(this.match === true)
@@ -60,7 +47,35 @@ roomController.bookroom = async (req, res) => {
       });
     }
   }
-    } catch (error) {
+     catch (error) {
+      console.log('error', error);
+      console.log("czd");
+      return res.status(500).send(
+        error
+        );
+    }
+  };
+
+
+  roomController.scan = async (req, res) => {
+    try {
+      let result;
+      const body = req.body;
+        let Rmid = body.roomqr;
+        console.log(Rmid);
+      const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":Rmid})
+         if(scanroom.length)
+         {
+           console.log("SCAN verified");
+         }
+        
+        
+
+  
+    
+    
+        }
+     catch (error) {
       console.log('error', error);
       console.log("czd");
       return res.status(500).send(
