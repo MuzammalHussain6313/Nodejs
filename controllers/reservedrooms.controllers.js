@@ -9,8 +9,7 @@ roomController.bookroom = async (req, res) => {
       {
         console.log(body);
         const scanrm = body.roomqr;
-           const iid = "5ed2064b0e668f00172bfdd3";
-      const scanroom = await  Reservedroom.find({ "_id":iid , "Room.Rooms.roomno.Roomid" :[ scanrm ]})
+      const scanroom = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid":scanrm})
          if(scanroom.length)
          {
            console.log("SCAN verified");
@@ -23,10 +22,10 @@ roomController.bookroom = async (req, res) => {
       this.match = false;
       const r = body.Room; 
       console.log(r);
-         for (var i = 0; i < r.length; i++)
-      {
+      //    for (var i = 0; i < 1; i++)
+      // {
         
-         let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
+         let Rmid = 111;
          console.log(Rmid);
         // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
 
@@ -42,7 +41,7 @@ roomController.bookroom = async (req, res) => {
             this. match = true;
           }
       
-        }
+        // }
   
     console.log(this.match);
     if(this.match === true)
