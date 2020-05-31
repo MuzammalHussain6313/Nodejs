@@ -64,24 +64,18 @@ roomController.bookroom = async (req, res) => {
       const body = req.body;
         // let Rmid = body.roomqr;
         // console.log(Rmid);
-           let Rmid = 111;
-           console.log(Rmid);
-          // const dte = await  Reservedroom.find({ "body.checkin":{ $lt: date }})
-  
+          //  let Rmid = 111;
+          //  console.log(Rmid);
+           for (var i = 0; i < 1; i++)
+      {
+        let Rmid = 111;
           const r = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
              console.log(r);
           if(r.length)
             {
                console.log(" roomId match");
             }
-            
-    
-        
-        
-
-  
-    
-    
+          }
         }
      catch (error) {
       console.log('error', error);
