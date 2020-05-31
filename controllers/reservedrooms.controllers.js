@@ -71,7 +71,7 @@ roomController.bookroom = async (req, res) => {
   
           const r = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid})
              console.log(r);
-          if(rm.length)
+          if(r.length)
             {
                console.log(" roomId match");
             }
