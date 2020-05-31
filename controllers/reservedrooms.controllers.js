@@ -61,8 +61,8 @@ roomController.bookroom = async (req, res) => {
     try {
       
       const body = req.body;
-        let Rmid = body.roomqr;
-        console.log(Rmid);
+        // let Rmid = body.roomqr;
+        // console.log(Rmid);
        
           
            let Rmid = 111;
