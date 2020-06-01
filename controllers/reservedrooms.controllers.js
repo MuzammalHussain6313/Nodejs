@@ -12,7 +12,7 @@ roomController.bookroom = async (req, res) => {
          for (var i = 0; i < r.length; i++)
       {
         
-         let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
+         //let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
          console.log(Rmid);
          let rmmm = '111';
 
