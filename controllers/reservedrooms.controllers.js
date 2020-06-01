@@ -12,11 +12,9 @@ roomController.bookroom = async (req, res) => {
          for (var i = 0; i < r.length; i++)
       {
         
-         //let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
-         console.log(Rmid);
-         let rmmm = '111';
+         let Rmid = body.Room[i].Rooms[i].roomno.Roomid;
 
-        const rmid = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": rmmm})
+        const rmid = await  Reservedroom.find({ "Room.Rooms.roomno.Roomid": Rmid })
            console.log(rmid);
         if(rmid.length)
           {
@@ -69,12 +67,16 @@ roomController.bookroom = async (req, res) => {
           if(r.length)
             {
                console.log(" scan");
+               res.status(200).send({
+                code: 200,
+        
+                message: 'Rooms Booked Successfully',
+              });
             }
           }
         
      catch (error) {
       console.log('error', error);
-      console.log("czd");
       return res.status(500).send(
         error
         );
