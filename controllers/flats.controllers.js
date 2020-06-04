@@ -44,6 +44,22 @@ flatsController.addBook = async (req, res) => {
   }
 };
 
+flatsController.addreview = async (req, res) => {
+  try {
+  
+    const body = req.body;
+ 
+    const flat= new Flats(body);
+  const result = await flat.save();
+    res.status(200).send({
+      code: 200,
+      message: 'Flat Added Successfully',
+    });
+  } catch (error) {
+    console.log('error', error);
+    return res.status(500).send(error);
+  }
+};
 
 
 module.exports = flatsController;
