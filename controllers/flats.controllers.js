@@ -53,6 +53,7 @@ flatsController.addreview = async (req, res) => {
   const result = await flat.save();
     res.status(200).send({
       code: 200,
+      result,
       message: 'Flat Added Successfully',
     });
   } catch (error) {

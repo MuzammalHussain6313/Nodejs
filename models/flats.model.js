@@ -8,12 +8,21 @@ const Flat = new Schema({
         type: String
        
     },
-    
+
      name: {
         type: String
     },
     number: {                                       
-        type: String,
+        type: String
+
+    },
+    star:
+    {
+        type: String
+    },
+    title:
+    { 
+        type: String
 
     },
      city: {
