@@ -18,4 +18,26 @@ ratingController.addreview = async (req, res) => {
         return res.status(500).send(error);
       }
   };
+
+
+  ratingController.getrate = async (req, res) => {
+
+    try {
+    
+      const owner = req.params.owner;
+     
+     const rating = await Ratings.find({ propertyid : owner});
+      //console.log(flat);  this.flats = data.data;
+      res.status(200).send({
+        code: 200,
+        message: 'Successful',
+       rating
+      });
+  
+    }
+    catch (error) {
+      console.log('error', error);
+      return res.status(500).send(error);
+    }
+  };
   module.exports = ratingController;
