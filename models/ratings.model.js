@@ -8,7 +8,10 @@ const Rating = new Schema({
         type: String
        
     },
-
+    userid:
+    {
+        type: String
+    },
     
     rating:
     {
