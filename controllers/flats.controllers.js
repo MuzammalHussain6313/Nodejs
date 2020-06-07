@@ -72,13 +72,22 @@ flatsController.getFlat = async (req, res) => {
     const owner = req.params.owner;
    
    const flats = await Flats.find({ owner: owner});
-    //console.log(flat);  this.flats = data.data;
+
+
+   for (let flat of flats) 
+   { 
+           
+    const review = await Ratings.findOne({userid: flat._id});
+     flat['review'] = review;
+  }
     res.status(200).send({
       code: 200,
       message: 'Successful',
-      data: flats
+      flats,
+      flat
+        
     });
-
+   
   }
   catch (error) {
     console.log('error', error);
