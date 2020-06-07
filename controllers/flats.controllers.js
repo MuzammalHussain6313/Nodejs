@@ -1,5 +1,6 @@
 const flatsController = {};
 const Flats = require('../models/flats.model');
+const Ratings = require('../models/ratings.model');
 const jsonwebtoken =  require('jsonwebtoken');
 flatsController.getAll = async (req, res) => {
   let flats;
