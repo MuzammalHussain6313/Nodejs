@@ -25,7 +25,7 @@ ratingController.addreview = async (req, res) => {
     try {
   
       const body = req.body;
-      console.log(body.FLT);
+      console.log(body);
     // const result = await Ratings.find({ propertyid : owner});
       //console.log(flat);  this.flats = data.data;
       res.status(200).send({
