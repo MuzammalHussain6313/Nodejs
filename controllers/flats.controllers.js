@@ -84,7 +84,7 @@ flatsController.getFlat = async (req, res) => {
       code: 200,
       message: 'Successful',
       flats,
-      flat
+      review: flat
         
     });
    
