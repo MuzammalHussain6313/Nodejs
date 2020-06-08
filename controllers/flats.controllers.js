@@ -82,13 +82,14 @@ flatsController.getFlat = async (req, res) => {
     let reviewsTotal = 0;
     if(reviews.length)
     {
-    
-        for (let review of reviews){
+           const adrom =[];
+        for (let review of reviews)
+        {
 
-          this.adrom.push(review.rating)
+          adrom.push(review.rating)
           
         }
-        var sumNumber = this.adrom.reduce((acc, cur) => acc + Number(cur), 0) ;
+        var sumNumber = adrom.reduce((acc, cur) => acc + Number(cur), 0) ;
     reviewsTotal = Number( sumNumber / reviews.length);
 
     }
