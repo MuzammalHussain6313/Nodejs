@@ -78,7 +78,7 @@ flatsController.getFlat = async (req, res) => {
 
     const id = item._id;
     const reviews = await Ratings.find({userid: id});
-    let reviewsTotal = 0;
+    let reviewsTotal;
     if(reviews.length)
     {
   
@@ -96,7 +96,7 @@ flatsController.getFlat = async (req, res) => {
     console.log(reviewsTotal);
     
     }
-
+    console.log(reviewsTotal);
     const tempItem = Object.assign({}, item);
     tempItem['reviewsTotal'] = reviewsTotal;
    item = Object.assign({}, tempItem );
