@@ -90,6 +90,7 @@ flatsController.getFlat = async (req, res) => {
         }
            
     reviewsTotal = Number(count / reviews.length)
+    console.log(reviewsTotal);
     item['reviewsTotal'] = 434345;
     console.log(item);
     }
