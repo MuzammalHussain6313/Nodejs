@@ -73,34 +73,34 @@ flatsController.getFlat = async (req, res) => {
    
    const flats = await Flats.find({ owner: owner});
    
-   for (var i = 0; i < flats.length; i++)
-   {
-      this. id = flats[i]._id;
-      const review = await Ratings.find({userid: this.id});
-      if(review.length)
-      {
-        let k = 0;
-        this.rate =[];
-      for (var j = 0; j <review.length; j++) 
-        { 
-          k = k + 1
-          this.rate.push(review[j].rating);
-         }
-         console.log(this.rate);
-         this.sum =  this.rate.reduce((acc, cur) => acc + Number(cur), 0)
-           let avg =  this.sum/k;
-           console.log(avg);
-          this.id['avg'] = avg;
-         console.log(this.id);
-      }
-     
-  }
-  console.log(this.id);
-  //console.log(flat);
+   for (let item of flats){
+
+    const id = item._id;
+    const reviews = await Ratings.find({userid: id});
+    let reviewsTotal = 0;
+    if(reviews.length)
+    {
+  
+        let count = 0;
+        for (let review of reviews)
+        {
+
+
+            count = count + review.rating;
+        }
+           
+    reviewsTotal = Number(count / reviews.length)
+
+    }
+
+    item['reviewsTotal'] = reviewsTotal;
+
+   }
+
     res.status(200).send({
       code: 200,
       message: 'Successful',
-      // data: flat
+      data: flats
         
     });
    
@@ -110,7 +110,6 @@ flatsController.getFlat = async (req, res) => {
     return res.status(500).send(error);
   }
 };
-
 
 flatsController.deleteBook = async (req, res) => {
   if (!req.params.id) {
