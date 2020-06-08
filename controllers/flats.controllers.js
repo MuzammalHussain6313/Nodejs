@@ -73,13 +73,20 @@ flatsController.getFlat = async (req, res) => {
     const owner = req.params.owner;
    
    const flats = await Flats.find({ owner: owner});
-   for (const flat of flats) 
-   {    
-    const review = await Ratings.find({userid: flat._id});
-     console.log(flat['review'] = review.rating);
-  
-     
+   
+   for (var i = 0; i < flats.length; i++)
+   {
+      const id = flats[i]._id;
+      const review = await Ratings.find({userid: id});
+      for (var j = 0; j <review.length; j++)
+   {
+        const array = [];
+       array.push(flats[i].rating);
+       flats[i] = array;
+   }
+     console.log( flats[i]);
   }
+  
   //console.log(flat);
     res.status(200).send({
       code: 200,
