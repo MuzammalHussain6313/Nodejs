@@ -100,7 +100,7 @@ flatsController.getFlat = async (req, res) => {
     const tempItem = Object.assign({}, item);
     tempItem['reviewsTotal'] = reviewsTotal;
    item = Object.assign({}, tempItem );
-
+    console.log(item);
    }
 
     res.status(200).send({
