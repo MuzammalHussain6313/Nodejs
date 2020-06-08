@@ -79,15 +79,15 @@ flatsController.getFlat = async (req, res) => {
       const review = await Ratings.find({userid: id});
       if(review.length)
       {
-        let j = 0;
+        let k = 0;
         this.rate =[];
       for (var j = 0; j <review.length; j++) 
         { 
-          j = j + 1
+          k = k + 1
           this.rate.push(review[j].rating);
          }
          this.sum =  this.rate.reduce((acc, cur) => acc + Number(cur), 0)
-           let avg =  this.sum/j;
+           let avg =  this.sum/k;
            console.log(avg);
       }
      
