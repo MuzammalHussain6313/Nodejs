@@ -82,7 +82,7 @@ flatsController.getFlat = async (req, res) => {
     if(reviews.length)
     {
   
-        let count = 0;
+      
        const adrom = [];
         for (let review of reviews)
         {
@@ -94,8 +94,9 @@ flatsController.getFlat = async (req, res) => {
            console.log(reviews.length);
     reviewsTotal = Number(sumNumber / reviews.length);
     console.log(reviewsTotal);
-    item['reviewsTotal'] = owner;
-    console.log(item);
+    const tempItem = Object.assign({}, item);
+    tempItem['reviewsTotal'] = reviewsTotal;
+   item = Object.assign({}, tempItem );
     }
 
 
