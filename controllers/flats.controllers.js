@@ -100,7 +100,7 @@ flatsController.getFlat = async (req, res) => {
     res.status(200).send({
       code: 200,
       message: 'Successful',
-      data: flats
+      data: item
         
     });
    
