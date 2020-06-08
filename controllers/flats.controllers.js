@@ -76,8 +76,8 @@ flatsController.getFlat = async (req, res) => {
    for (const flat of flats) 
    {    
     const review = await Ratings.find({userid: flat._id});
-     console.log(flat['review'] = review);
-     console.log(review);
+     console.log(flat['review'] = review.rating);
+  
      
   }
   //console.log(flat);
