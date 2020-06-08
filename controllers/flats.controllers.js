@@ -75,8 +75,8 @@ flatsController.getFlat = async (req, res) => {
    
    for (var i = 0; i < flats.length; i++)
    {
-      const id = flats[i]._id;
-      const review = await Ratings.find({userid: id});
+      this. id = flats[i]._id;
+      const review = await Ratings.find({userid: this.id});
       if(review.length)
       {
         let k = 0;
@@ -90,10 +90,12 @@ flatsController.getFlat = async (req, res) => {
          this.sum =  this.rate.reduce((acc, cur) => acc + Number(cur), 0)
            let avg =  this.sum/k;
            console.log(avg);
+          this.id['avg'] = avg;
+         console.log(this.id);
       }
      
   }
-  
+  console.log(this.id);
   //console.log(flat);
     res.status(200).send({
       code: 200,
