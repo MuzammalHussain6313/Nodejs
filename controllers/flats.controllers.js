@@ -68,39 +68,34 @@ module.exports = flatsController;
 flatsController.getFlat = async (req, res) => {
 
   try {
-
   
     const owner = req.params.owner;
    
-   const flats = await Flats.find({ owner: owner});
+   let myflats = await Flats.find({ owner: owner});
    
+   let flats = JSON.parse(JSON.stringify(myflats))
+
    for (let item of flats){
 
     const id = item._id;
     const reviews = await Ratings.find({userid: id});
-    let reviewsTotal;
+    let reviewsTotal = 0;
     if(reviews.length)
     {
   
-      
-       const adrom = [];
-        for (let review of reviews)
-        {
+        let count = 0;
+        for (let review of reviews){
 
-          adrom.push(review.rating)
-          
+
+            count = count + review.rating;
         }
-        var sumNumber = adrom.reduce((acc, cur) => acc + Number(cur), 0)
-           console.log(reviews.length);
-    reviewsTotal = Number(sumNumber / reviews.length);
-    console.log(reviewsTotal);
-    
+           
+    reviewsTotal = Number(count / reviews.length)
+
     }
-    console.log(reviewsTotal);
-    const tempItem = Object.assign({}, item);
-    tempItem['reviewsTotal'] = reviewsTotal;
-   item = Object.assign({}, tempItem );
-    console.log(item);
+
+    item['reviewsTotal'] = reviewsTotal;
+
    }
 
     res.status(200).send({
