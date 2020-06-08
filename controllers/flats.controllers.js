@@ -68,6 +68,7 @@ module.exports = flatsController;
 flatsController.getFlat = async (req, res) => {
 
   try {
+
   
     const owner = req.params.owner;
    
@@ -82,17 +83,18 @@ flatsController.getFlat = async (req, res) => {
     {
   
         let count = 0;
+       const adrom = [];
         for (let review of reviews)
         {
 
-
-            count = count + review.rating;
+          adrom.push(review.rating)
+          
         }
-           console.log(count);
+        var sumNumber = adrom.reduce((acc, cur) => acc + Number(cur), 0)
            console.log(reviews.length);
-    reviewsTotal = Number(count / reviews.length);
+    reviewsTotal = Number(sumNumber / reviews.length);
     console.log(reviewsTotal);
-    item['reviewsTotal'] = 434345;
+    item['reviewsTotal'] = owner;
     console.log(item);
     }
 
