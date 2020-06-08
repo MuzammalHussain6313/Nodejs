@@ -93,14 +93,14 @@ flatsController.getFlat = async (req, res) => {
 
     }
 
-    item['reviewsTotal'] = reviewsTotal;
+    item['reviewsTotal'] = '45';
 
    }
 
     res.status(200).send({
       code: 200,
       message: 'Successful',
-      data: item
+      data: flats
         
     });
    
