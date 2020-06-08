@@ -80,11 +80,11 @@ flatsController.getFlat = async (req, res) => {
       const review = await Ratings.find({userid: id});
       for (var j = 0; j <review.length; j++)
    {
-        const array = [];
-       array.push(flats[i].rating);
-       flats[i] = array;
+        this.array = [];
+      this. array.push(review[j].rating);
+       
    }
-     console.log( flats[i]);
+     console.log( this.array);
   }
   
   //console.log(flat);
