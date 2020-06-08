@@ -65,7 +65,6 @@ flatsController.addreview = async (req, res) => {
 
 
 module.exports = flatsController;
-
 flatsController.getFlat = async (req, res) => {
 
   try {
@@ -78,13 +77,20 @@ flatsController.getFlat = async (req, res) => {
    {
       const id = flats[i]._id;
       const review = await Ratings.find({userid: id});
-      for (var j = 0; j <review.length; j++)
-   {
-        this.array = [];
-      this. array.push(review[j].rating);
-       
-   }
-     console.log( this.array);
+      if(review.length)
+      {
+        let j = 0;
+        this.rate =[];
+      for (var j = 0; j <review.length; j++) 
+        { 
+          j = j + 1
+          this.rate.push(review[j].rating);
+         }
+         this.sum =  this.rate.reduce((acc, cur) => acc + Number(cur), 0)
+           let avg =  this.sum/j;
+           console.log(avg);
+      }
+     
   }
   
   //console.log(flat);
