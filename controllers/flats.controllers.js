@@ -94,12 +94,12 @@ flatsController.getFlat = async (req, res) => {
            console.log(reviews.length);
     reviewsTotal = Number(sumNumber / reviews.length);
     console.log(reviewsTotal);
+    
+    }
+
     const tempItem = Object.assign({}, item);
     tempItem['reviewsTotal'] = reviewsTotal;
    item = Object.assign({}, tempItem );
-    }
-
-
 
    }
 
