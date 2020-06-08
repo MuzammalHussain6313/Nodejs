@@ -73,11 +73,8 @@ flatsController.getFlat = async (req, res) => {
     const owner = req.params.owner;
    
    const flats = await Flats.find({ owner: owner});
-
-
-   for (let flat of flats) 
-   { 
-           
+   for (const flat of flats) 
+   {    
     const review = await Ratings.findOne({userid: flat._id});
      flat['review'] = review;
   }
