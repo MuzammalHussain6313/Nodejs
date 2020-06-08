@@ -76,12 +76,15 @@ flatsController.getFlat = async (req, res) => {
    for (const flat of flats) 
    {    
     const review = await Ratings.findOne({userid: flat._id});
+    console.log(review);
      flat['review'] = review;
+     
   }
+  console.log(flat);
     res.status(200).send({
       code: 200,
       message: 'Successful',
-      data: flat
+      // data: flat
         
     });
    
