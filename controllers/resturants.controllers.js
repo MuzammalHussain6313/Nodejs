@@ -43,4 +43,55 @@ resturantsController.addresturant = async (req, res) => {
       return res.status(500).send(error);
     }
   };
+
+
+  resturantsController.getresturant = async (req, res) => {
+
+    try {
+    
+      const owner = req.params.owner;
+     
+     let myresturants = await Resturants.find({ owner: owner});
+     
+     let resturants = JSON.parse(JSON.stringify(myresturants))
+  
+     for (let item of resturants){
+  
+      const id = item._id;
+      const reviews = await Ratings.find({resturantid : id});
+      let reviewsTotal = 0;
+      if(reviews.length)
+      {
+             const adrom =[];
+          for (let review of reviews)
+          {
+  
+            adrom.push(review.rating)
+            
+          }
+          var sumNumber = adrom.reduce((acc, cur) => acc + Number(cur), 0) ;
+      reviewsTotal = Number( sumNumber / reviews.length);
+  
+      }
+  
+      item['reviewsTotal'] = reviewsTotal;
+  
+     }
+  
+      res.status(200).send({
+        code: 200,
+        message: 'Successful',
+        data: resturants
+          
+      });
+     
+    }
+    catch (error) {
+      console.log('error', error);
+      return res.status(500).send(error);
+    }
+  };
+
+
+
   module.exports = resturantsController;
