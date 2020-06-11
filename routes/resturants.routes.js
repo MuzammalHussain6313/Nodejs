@@ -7,6 +7,6 @@ const checkAuth = require('../middleware/check-auth');
 router.get("/", checkAuth,resturantController.getAll);
 router.post("/add",checkAuth,resturantController.addresturant);
 router.get("/:owner", checkAuth,resturantController.getresturant)
-// router.put("/:id", checkAuth,flatController.updateBook);
+ router.put("/:id", checkAuth,resturantController.update);
 // router.delete("/:id",checkAuth, flatController.deleteBook);
 module.exports = router;

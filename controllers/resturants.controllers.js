@@ -94,5 +94,38 @@ resturantsController.addresturant = async (req, res) => {
   };
 
 
+  resturantsController.update = async (req, res) => {
+    if (!req.params.id) {
+      res.status(500).send({
+        message: 'ID missing'
+      });
+    }
+    try {
+      const _id = req.params.id;
+      let updates = req.body;
+      const result = await Resturants.updateOne(
+        {
+          _id: _id
+        },
+        {
+          $set: updates
+        },
+        {
+          upsert: true,
+          runValidators: true
+        }
+      );
+      if (result.nModified == 1) {
+        res.status(200).send({
+          code: 200,
+          message: 'Updated Successfully'
+        });
+      }
+    } catch (error) {
+      console.log('error', error);
+      return res.status(500).send(error);
+    }
+  };
+
 
   module.exports = resturantsController;
