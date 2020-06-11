@@ -1,5 +1,6 @@
 const resturantsController = {};
 const Resturants = require('../models/resturants.model');
+const Resturantratings = require('../models/resturantratings.model');
 const jsonwebtoken =  require('jsonwebtoken');
 resturantsController.addresturant = async (req, res) => {
     try {
@@ -58,7 +59,7 @@ resturantsController.addresturant = async (req, res) => {
      for (let item of resturants){
   
       const id = item._id;
-      const reviews = await Ratings.find({resturantid : id});
+      const reviews = await Resturantratings.find({resturantid : id});
       let reviewsTotal = 0;
       if(reviews.length)
       {
