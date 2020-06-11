@@ -1,5 +1,5 @@
 const resturantratingController = {};
-const Resturantratings = require('../models/ratings.model');
+const Resturantratings = require('../models/resturantratings.model');
 const jsonwebtoken =  require('jsonwebtoken');
 resturantratingController.addreview = async (req, res) => {
     try {
