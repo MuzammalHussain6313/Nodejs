@@ -128,4 +128,29 @@ resturantsController.addresturant = async (req, res) => {
   };
 
 
+
+  resturantsController.delete = async (req, res) => {
+    if (!req.params.id) {
+      Fu;
+      res.status(500).send({
+        message: 'ID missing'
+      });
+    }
+    try {
+      const _id = req.params.id;
+  
+      const result = await Resturants.findOneAndDelete({
+        _id: _id
+      });
+     
+      res.status(200).send({
+        code: 200,
+        message: 'Deleted Successfully'
+      });
+    } catch (error) {
+      console.log('error', error);
+      return res.status(500).send(error);
+    }
+  };
+
   module.exports = resturantsController;
