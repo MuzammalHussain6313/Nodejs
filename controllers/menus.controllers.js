@@ -1,4 +1,4 @@
-
+const menuController = {};
 const Menus = require('../models/menus.model');
 const jsonwebtoken =  require('jsonwebtoken');
 menuController.addmenu = async (req, res) => {
