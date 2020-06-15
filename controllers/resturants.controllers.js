@@ -9,6 +9,7 @@ resturantsController.addresturant = async (req, res) => {
    
       const resturant= new Resturants(body);
       const result = await resturant.save();
+      console.log(result);
       res.status(200).send({
         code: 200,
         result,
