@@ -1,7 +1,7 @@
-const menuController = {};
+const menusController = {};
 const Menus = require('../models/menus.model');
 const jsonwebtoken =  require('jsonwebtoken');
-menuController.addmenu = async (req, res) => {
+menusController.ad = async (req, res) => {
     try {
   
         const body = req.body;
@@ -18,4 +18,4 @@ menuController.addmenu = async (req, res) => {
         return res.status(500).send(error);
       }
   };
-  module.exports = menuController;
+  module.exports = menusController;
