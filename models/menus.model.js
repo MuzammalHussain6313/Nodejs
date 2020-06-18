@@ -12,6 +12,9 @@ const Menu = new Schema({
     AvailableTime: {
         type: Array
     },
+     Tabels: {
+        type: Array
+    },
     is_deleted: {
         type: Boolean,
         default: false
