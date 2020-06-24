@@ -5,6 +5,7 @@ menusController.ad = async (req, res) => {
     try {
   
         const body = req.body;
+        console.log(body);
         const menu = new Menus(body);
       const result = await menu.save();
        
