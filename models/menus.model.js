@@ -12,7 +12,7 @@ const Menu = new Schema({
     AvailableTime: {
         type: Array
     },
-     Tabels: {
+     Ta: {
         type: Array
     },
     is_deleted: {
