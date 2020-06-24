@@ -18,4 +18,25 @@ menusController.ad = async (req, res) => {
         return res.status(500).send(error);
       }
   };
+
+  menusController.getmenu = async (req, res) => {
+
+    try {
+    
+      const restrnd = req.params.restrnid;
+     
+     const menus = await Menus.find({ resturantid: restrnd});
+      //console.log(flat);  this.flats = data.data;
+      res.status(200).send({
+        code: 200,
+        message: 'Successful',
+        data: menus
+      });
+    
+    }
+    catch (error) {
+      console.log('error', error);
+      return res.status(500).send(error);
+    }
+  };
   module.exports = menusController;
