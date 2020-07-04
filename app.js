@@ -43,6 +43,7 @@ const RoomcodesRoutes = require('./routes/roomcodes.routes');
 const RatingsRoutes = require('./routes/ratings.routes');
 const  ResturantratingsRoutes = require('./routes/resturantratings.routes');
 const MenusRoutes = require('./routes/menus.routes');
+const BookedtablesRoutes = require('./routes/bookedtables.routes');
     /////////// HEROKU Live URL
 const mongoCon = process.env.mongoCon;
 mongoose.connect('mongodb+srv://dbadmin:xxxxxxxx8@cluster0-whpqa.mongodb.net/bookyapp?retryWrites=true&w=majority',{ useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true });
@@ -168,6 +169,7 @@ app.use("/roomcodes", RoomcodesRoutes);
 app.use("/ratings", RatingsRoutes);
 app.use("/menus", MenusRoutes);
 app.use("/resturantratings", ResturantratingsRoutes);
+app.use("/bookedtables", BookedtablesRoutes);
 app.use(errorHandler);
 
 app.use(errorMessage);
