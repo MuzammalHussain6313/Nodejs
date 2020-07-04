@@ -8,27 +8,27 @@ tableController.booktable = async (req, res) => {
       //console.log(body);
       console.log(body.Table[0].Booked[0].tableno);
       this.match = false;
-      // const r = body.Room; 
-      //console.log(r);
-      //    for (var i = 0; i < r.length; i++)
-      // {
+       const r = body.Table[0].Booked[0]; 
+      console.log(r);
+         for (var i = 0; i < r.length; i++)
+       {
         
-      //    let tableid = body.Room[i].Rooms[i].roomno.Roomid;
+         let tableid = body.Table[0].Booked[0].tableno;
 
-      //   const tblid = await  Bookedtable.find({ "Room.Rooms.roomno.Roomid": tableid })
-      //      console.log(rmid);
-      //   if(tblid.length)
-      //     {
-      //        console.log(" tablid match");
+        const tblid = await  Bookedtable.find({ "Table.Booked.tableno": tableid })
+           console.log(tblid);
+        if(tblid.length)
+          {
+             console.log(" tablid match");
             
-      //     }
-      //     else
-      //     {
-      //       console.log("giniv");
-      //       this. match = true;
-      //     }
+          }
+          else
+          {
+            console.log("giniv");
+            this. match = true;
+          }
       
-      //   }
+        }
   
     console.log(this.match);
     // if(this.match === true)
