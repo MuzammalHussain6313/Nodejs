@@ -9,7 +9,7 @@ tableController.booktable = async (req, res) => {
       console.log(body.Table[0].Booked[0].tableno);
       this.match = false;
        const r = body.Table[0].Booked[0]; 
-      console.log(r);
+      console.log(r.length);
          for (var i = 0; i < r.length; i++)
        {
         
