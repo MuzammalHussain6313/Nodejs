@@ -31,21 +31,21 @@ tableController.booktable = async (req, res) => {
         }
   
     console.log(this.match);
-    // if(this.match === true)
-    // {
-    //    const body = req.body;
-    //       const  bookedtable = new  Bookedtable (body);
-    //      result = await  bookedtable.save();
+    if(this.match === true)
+    {
+       const body = req.body;
+          const  bookedtable = new  Bookedtable (body);
+         result = await  bookedtable.save();
         
-    // }
-    // if(this.match === true)
-    // {
-    //   res.status(200).send({
-    //     code: 200,
+    }
+    if(this.match === true)
+    {
+      res.status(200).send({
+        code: 200,
 
-    //     message: 'Table Booked Successfully',
-    //   });
-    // }
+        message: tblid,
+      });
+    }
   }
      catch (error) {
       console.log('error', error);
