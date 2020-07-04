@@ -42,8 +42,8 @@ tableController.booktable = async (req, res) => {
     {
       res.status(200).send({
         code: 200,
-
-        message: tblid,
+        result,
+        message: 'table booked',
       });
     }
   }
