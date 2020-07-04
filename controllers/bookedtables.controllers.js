@@ -6,7 +6,7 @@ tableController.booktable = async (req, res) => {
       let result;
       const body = req.body;
       //console.log(body);
-      console.log(body.Table[0].Booked);
+      console.log(body.Table[0].Booked[0].tableno);
       this.match = false;
       // const r = body.Room; 
       //console.log(r);
