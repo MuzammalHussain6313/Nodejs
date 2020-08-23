@@ -54,7 +54,7 @@ clientsController.registerUser = async (req, res) => {
       if(ex.code===11000){
         res
         .send({
-          message: 'This email has been registered already',
+          message1: 'This email has been registered already',
         })
         .status(500);
       }

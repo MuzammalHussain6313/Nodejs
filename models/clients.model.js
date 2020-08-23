@@ -8,7 +8,10 @@ const Client = new Schema({
         unique: true,
         sparse:true
     },
-     name: {
+     firstname: {
+        type: String
+    },
+    lastname: {
         type: String
     },
      email: {

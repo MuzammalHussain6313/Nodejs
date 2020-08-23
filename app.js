@@ -15,7 +15,7 @@ var mkdirp = require('mkdirp');
 const flatsController = {};
 const Flats = require("./models/flats.model");
 const path = require('path');
-
+const paypal = require('paypal-rest-sdk');
 let flats;
 app.use(
     bodyParser.urlencoded({
@@ -46,6 +46,7 @@ const MenusRoutes = require('./routes/menus.routes');
 const BookedtablesRoutes = require('./routes/bookedtables.routes');
     /////////// HEROKU Live URL
 const mongoCon = process.env.mongoCon;
+//mongoose.connect(mongoCon,{ useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true });
 mongoose.connect('mongodb+srv://dbadmin:xxxxxxxx8@cluster0-whpqa.mongodb.net/bookyapp?retryWrites=true&w=majority',{ useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true });
 
 
@@ -55,8 +56,52 @@ fs.readdirSync(__dirname + "/models").forEach(function(file) {
     require(__dirname + "/models/" + file);
 });
 
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'Ad04wzJvD03g7X-8NqhY1Y1ugTTmM1zGlcVXzhSwLO1KYvKv2beXcLNF4xGtYUDZBLc4YL7vLxuBsl_C',
+  'client_secret': 'ENMsXcoSSYxHePu52msgQBRRKoyFJsLZaTbFd3OvC0QCJH1t3NG-XirK98nKv0hkYfRKhUyPxAacOv5d'
+});
+
+app.globalAmount = 0
+app.post('/createpayment', function (req, res)  {
+  app.globalAmount = req.body.amount;
+  var create_payment_json = {
+    "intent": "sale",
+    "payer": {
+        "payment_method": "paypal"
+    },
+    "redirect_urls": {
+        "return_url": "http://locahost:3000/executepayment",
+        "cancel_url": "http://locahost:3000/cancelpayment"
+    },
+    "transactions": [{
+        "item_list": {
+            "items": [{
+                "name": "item",
+                "sku": "item",
+                "price": req.body.amount,
+                "currency": "USD",
+                "quantity": 1
+            }]
+        },
+        "amount": {
+            "currency": "USD",
+            "total": req.body.amount
+        },
+        "description": "This is the payment description."
+    }]
+};
 
 
+paypal.payment.create(create_payment_json, function (error, payment) {
+    if (error) {
+        throw error;
+    } else {
+        console.log("Create Payment Response");
+        console.log(payment);
+    }
+});
+})
 
 //app.use(express.static("public"));
 app.use('/images', express.static(path.join(__dirname, 'upload')));
