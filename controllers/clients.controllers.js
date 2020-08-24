@@ -151,5 +151,34 @@ clientsController.loginUser = async (req, res) => {
     }
 };
 
-
+clientsController.clientpass = async (req, res) => {
+  try {
+     
+    const body = req.body;
+     
+    const email = body.email;
+     
+    const password = body.password;
+     
+   
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(password, salt);
+  body.password = hash;
+    const result = await Clients.findOne({ email: email });
+      if (!result) 
+      {
+                   console.log("nnnnnnnnnnn"); 
+      }
+           
+    else {
+    
+    const result = await Clients.updateOne({email: email}, {$set:{password:body.password}});
+     
+   
+    }
+  }
+   catch (ex) {
+    console.log('ex', ex);
+  }
+};
   module.exports = clientsController;

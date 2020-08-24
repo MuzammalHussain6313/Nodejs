@@ -7,7 +7,16 @@ const User = new Schema({
         type: Number,
         
     },
-     name: {
+     firstname: {
+        type: String
+    },
+    lastname: {
+        type: String
+    },
+    cnic: {
+        type: String
+    },
+    phone: {
         type: String
     },
      email: {

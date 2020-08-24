@@ -5,6 +5,7 @@ const ClientController = require('../controllers/clients.controllers');
 router.post("/login",ClientController.loginUser);
 router.post("/signup",ClientController.registerUser);
 router.post("/verify",ClientController.verifyUser);
+router.post("/clientpass",ClientController.clientpass);
 // router.get("/:_id",UserController.getSingleUser);
 // // router.post("/",UserController.addUser);
 // router.put("/:_id", UserController.updateUser);
